@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shivangi Awasthi — Senior SDET</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<style>
+  :root {
+    --ink: #1d1d1f;
+    --ink-soft: #6e6e73;
+    --paper: #ffffff;
+    --paper-alt: #f5f5f7;
+    --line: #d2d2d7;
+    --accent: #0066cc;
+    --accent-hover: #0077ed;
+    --nav-h: 48px;
+    --maxw: 980px;
+    --ease: cubic-bezier(0.28, 0.11, 0.32, 1);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: var(--ink);
+    background: var(--paper);
+    line-height: 1.47;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { color: var(--accent-hover); text-decoration: underline; }
+  :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+  /* ---------- NAV ---------- */
+  .nav {
+    position: fixed; inset: 0 0 auto 0; height: var(--nav-h); z-index: 100;
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0);
+    transition: border-color 0.4s var(--ease), background 0.4s var(--ease);
+  }
+  .nav.scrolled { border-bottom-color: rgba(0, 0, 0, 0.08); }
+  .nav-inner {
+    max-width: 1024px; height: 100%; margin: 0 auto; padding: 0 22px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .brand { font-size: 19px; font-weight: 600; letter-spacing: -0.02em; color: var(--ink); }
+  .brand:hover { text-decoration: none; color: var(--ink); }
+  .nav-links { display: flex; gap: 30px; list-style: none; }
+  .nav-links a {
+    font-size: 12px; color: var(--ink); opacity: 0.85;
+    letter-spacing: -0.01em; transition: opacity 0.2s;
+  }
+  .nav-links a:hover { opacity: 1; text-decoration: none; }
+
+  /* ---------- SHELL ---------- */
+  section { padding: 130px 22px; }
+  .wrap { max-width: var(--maxw); margin: 0 auto; }
+  .alt { background: var(--paper-alt); }
+
+  /* ---------- HERO ---------- */
+  .hero { padding-top: calc(var(--nav-h) + 120px); padding-bottom: 110px; text-align: center; }
+  .eyebrow { font-size: 21px; font-weight: 600; color: var(--accent); margin-bottom: 6px; }
+  .hero h1 {
+    font-size: clamp(48px, 8.5vw, 96px); font-weight: 600;
+    letter-spacing: -0.015em; line-height: 1.05; margin-bottom: 16px;
+  }
+  .hero .sub {
+    font-size: clamp(21px, 3.4vw, 28px); font-weight: 500; color: var(--ink-soft);
+    max-width: 680px; margin: 0 auto 30px; letter-spacing: 0.004em; line-height: 1.35;
+  }
+  .cta-row { display: flex; gap: 30px; justify-content: center; flex-wrap: wrap; font-size: 19px; }
+  .cta-link::after { content: " \203A"; }
+
+  /* ---------- FEATURE SHOWCASES ---------- */
+  .feature { text-align: center; }
+  .feature .eyebrow { font-size: 19px; }
+  .feature h2 {
+    font-size: clamp(36px, 5.6vw, 60px); font-weight: 600;
+    letter-spacing: -0.01em; line-height: 1.07; margin-bottom: 18px;
+  }
+  .feature .lede {
+    font-size: clamp(19px, 2.6vw, 24px); color: var(--ink-soft);
+    max-width: 700px; margin: 0 auto 22px; line-height: 1.4; font-weight: 400;
+  }
+  .feature-links { font-size: 19px; display: flex; gap: 28px; justify-content: center; flex-wrap: wrap; }
+
+  .stage {
+    margin-top: 56px; height: 340px; border-radius: 22px;
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden; border: 1px solid var(--line);
+  }
+  .stage.dark { background: linear-gradient(160deg, #1d1d1f 0%, #2b2b2f 55%, #3a3a3f 100%); border-color: transparent; }
+  .stage.light { background: linear-gradient(160deg, #fbfbfd 0%, #eef0f4 100%); }
+  .glyph {
+    font-family: "SF Mono", ui-monospace, "Menlo", "Consolas", monospace;
+    font-size: clamp(14px, 1.9vw, 18px); line-height: 1.9; padding: 0 24px; text-align: left;
+  }
+  .stage.dark .glyph { color: #d6d6db; }
+  .stage.dark .glyph .k { color: #7fb2ff; }
+  .stage.dark .glyph .s { color: #7ad39a; }
+  .stage.dark .glyph .c { color: #8e8e93; }
+  .stage.light .glyph { color: #4a4a4f; }
+  .stage.light .glyph .k { color: var(--accent); }
+  .stage.light .glyph .s { color: #1a7f37; }
+  .stage.light .glyph .c { color: #8e8e93; }
+
+  .pill-metrics { margin-top: 52px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .metric { background: var(--paper); border: 1px solid var(--line); border-radius: 18px; padding: 26px 30px; min-width: 172px; }
+  .metric .num { font-size: 42px; font-weight: 600; letter-spacing: -0.02em; line-height: 1; }
+  .metric .lbl { font-size: 15px; color: var(--ink-soft); margin-top: 8px; }
+
+  /* ---------- SECTION HEAD ---------- */
+  .section-head { text-align: center; margin-bottom: 56px; }
+  .section-head h2 { font-size: clamp(34px, 5vw, 56px); font-weight: 600; letter-spacing: -0.01em; }
+  .section-head p { font-size: 21px; color: var(--ink-soft); margin-top: 10px; }
+
+  /* ---------- WORK ---------- */
+  .work-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 22px; }
+  .card {
+    background: var(--paper); border-radius: 22px; padding: 42px 36px;
+    border: 1px solid var(--line); display: flex; flex-direction: column;
+    transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
+  }
+  .card:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(0, 0, 0, 0.09); }
+  .card .tag { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); margin-bottom: 14px; }
+  .card h3 { font-size: 24px; font-weight: 600; letter-spacing: -0.01em; margin-bottom: 10px; }
+  .card p { font-size: 16px; color: var(--ink-soft); line-height: 1.5; flex-grow: 1; }
+  .card .kpi { margin-top: 22px; display: flex; gap: 22px; flex-wrap: wrap; }
+  .card .kpi div { font-size: 13px; color: var(--ink-soft); }
+  .card .kpi strong { display: block; font-size: 22px; font-weight: 600; color: var(--ink); letter-spacing: -0.01em; }
+
+  /* ---------- EXPERIENCE ---------- */
+  .exp-list { max-width: 860px; margin: 0 auto; border-top: 1px solid var(--line); }
+  .exp-row { display: grid; grid-template-columns: 168px 1fr; gap: 30px; padding: 30px 8px; border-bottom: 1px solid var(--line); align-items: baseline; }
+  .exp-row .when { font-size: 14px; color: var(--ink-soft); letter-spacing: -0.01em; }
+  .exp-row .role .co { font-size: 20px; font-weight: 600; letter-spacing: -0.01em; }
+  .exp-row .role .ttl { font-size: 15px; color: var(--accent); margin: 2px 0 8px; }
+  .exp-row .role .desc { font-size: 16px; color: var(--ink-soft); line-height: 1.5; }
+
+  /* ---------- SPECS ---------- */
+  .spec-list { max-width: 840px; margin: 48px auto 0; border-top: 1px solid var(--line); }
+  .spec-row { display: grid; grid-template-columns: 220px 1fr; gap: 28px; padding: 26px 8px; border-bottom: 1px solid var(--line); }
+  .spec-row .cat { font-size: 17px; font-weight: 600; letter-spacing: -0.01em; }
+  .spec-row .val { font-size: 17px; color: var(--ink-soft); line-height: 1.55; }
+
+  /* ---------- EDUCATION ---------- */
+  .edu-grid { max-width: 840px; margin: 48px auto 0; display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+  .edu-card { background: var(--paper); border: 1px solid var(--line); border-radius: 20px; padding: 34px 32px; }
+  .alt .edu-card { background: var(--paper); }
+  .edu-card .deg { font-size: 21px; font-weight: 600; letter-spacing: -0.01em; margin-bottom: 6px; }
+  .edu-card .school { font-size: 16px; color: var(--ink-soft); }
+  .edu-card .meta { font-size: 14px; color: var(--ink-soft); margin-top: 12px; }
+
+  /* ---------- CONTACT ---------- */
+  .contact { text-align: center; }
+  .contact h2 { font-size: clamp(40px, 6.5vw, 72px); font-weight: 600; letter-spacing: -0.015em; line-height: 1.06; margin-bottom: 18px; }
+  .contact p { font-size: clamp(19px, 2.6vw, 24px); color: var(--ink-soft); max-width: 620px; margin: 0 auto 36px; }
+  .btn { display: inline-block; background: var(--accent); color: #fff; font-size: 19px; padding: 13px 26px; border-radius: 980px; transition: background 0.25s; }
+  .btn:hover { background: var(--accent-hover); color: #fff; text-decoration: none; }
+  .contact-secondary { margin-top: 28px; display: flex; gap: 28px; justify-content: center; flex-wrap: wrap; font-size: 17px; }
+
+  /* ---------- FOOTER ---------- */
+  footer { background: var(--paper-alt); padding: 34px 22px; border-top: 1px solid var(--line); }
+  .foot-inner { max-width: 1024px; margin: 0 auto; font-size: 12px; color: var(--ink-soft); line-height: 1.6; }
+  .foot-inner .rule { border-top: 1px solid var(--line); margin: 16px 0; }
+
+  /* ---------- REVEAL ---------- */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.9s var(--ease), transform 0.9s var(--ease); will-change: opacity, transform; }
+  .reveal.in { opacity: 1; transform: none; }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 734px) {
+    section { padding: 88px 22px; }
+    .hero { padding-top: calc(var(--nav-h) + 70px); padding-bottom: 76px; }
+    .nav-links { display: none; }
+    .spec-row, .exp-row { grid-template-columns: 1fr; gap: 6px; }
+    .edu-grid { grid-template-columns: 1fr; }
+    .stage { height: 300px; }
+    .metric { min-width: 142px; padding: 22px 24px; }
+    .metric .num { font-size: 36px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+    .card { transition: none; }
+    * { scroll-behavior: auto !important; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand">Shivangi Awasthi</a>
+    <ul class="nav-links">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#specs">Specs</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow reveal">Senior SDET</p>
+      <h1 class="reveal">Shivangi Awasthi</h1>
+      <p class="sub reveal">Quality, engineered. Four years building the Python services, automation, and AI tooling that keep data trustworthy across payments, banking, and healthcare.</p>
+      <div class="cta-row reveal">
+        <a class="cta-link" href="#work">View work</a>
+        <a class="cta-link" href="#contact">Get in touch</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURE 1 -->
+  <section class="feature alt" id="automation">
+    <div class="wrap">
+      <p class="eyebrow reveal">Test Automation</p>
+      <h2 class="reveal">Automation that scales.</h2>
+      <p class="lede reveal">Pytest and Playwright suites built for negative, boundary, and edge-case coverage &mdash; wired into CI/CD so every merge earns its confidence. At CVS Health, that work lifted regression coverage to 68%.</p>
+      <div class="feature-links reveal">
+        <a href="#experience">See the history</a>
+      </div>
+      <div class="stage dark reveal">
+        <pre class="glyph"><span class="c"># regression suite, in CI/CD</span>
+<span class="k">@pytest.mark.parametrize</span>(<span class="s">"case"</span>, EDGE_CASES)
+<span class="k">def</span> test_reconciliation(case, pipeline):
+    result = pipeline.run(case)
+    <span class="k">assert</span> result.matched == case.expected
+    <span class="k">assert</span> result.status == <span class="s">"reconciled"</span></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURE 2 -->
+  <section class="feature" id="backend">
+    <div class="wrap">
+      <p class="eyebrow reveal">Backend &amp; Data</p>
+      <h2 class="reveal">Beyond the UI.</h2>
+      <p class="lede reveal">FastAPI microservices and PySpark reconciliation logic, owned from design through production. The framework I architected at CVS validates 53M records and cut audit cycles from four days to 22 hours.</p>
+      <div class="feature-links reveal">
+        <a href="#specs">Explore the stack</a>
+      </div>
+      <div class="stage light reveal">
+        <pre class="glyph"><span class="c"># PySpark reconciliation, at scale</span>
+mismatches = (source.join(target, <span class="s">"key"</span>, <span class="s">"outer"</span>)
+    .where(source.amount != target.amount))
+<span class="k">assert</span> mismatches.count() == <span class="s">0</span>
+<span class="c"># 53M records validated per run</span></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURE 3 -->
+  <section class="feature alt" id="ai">
+    <div class="wrap">
+      <p class="eyebrow reveal">AI &amp; LLM</p>
+      <h2 class="reveal">Testing meets AI.</h2>
+      <p class="lede reveal">Agentic AI and LLM-based automation, integrated into production quality systems. Agent workflows that triage data mismatches on their own &mdash; cutting manual investigation time by nearly a quarter.</p>
+      <div class="feature-links reveal">
+        <a href="#contact">Let's talk about it</a>
+      </div>
+      <div class="pill-metrics reveal">
+        <div class="metric"><div class="num">53M</div><div class="lbl">records reconciled</div></div>
+        <div class="metric"><div class="num">24%</div><div class="lbl">less manual triage</div></div>
+        <div class="metric"><div class="num">68%</div><div class="lbl">regression coverage</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section id="work">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2>Selected work.</h2>
+        <p>Where the impact shows up.</p>
+      </div>
+      <div class="work-grid">
+        <article class="card reveal">
+          <span class="tag">Healthcare Data</span>
+          <h3>Reconciliation platform</h3>
+          <p>Architected a FastAPI microservice framework from scratch at CVS Health, replacing a manual audit process and validating tens of millions of records against source-of-truth backends across Databricks.</p>
+          <div class="kpi">
+            <div><strong>4d &rarr; 22h</strong>audit cycle</div>
+            <div><strong>4</strong>services owned</div>
+          </div>
+        </article>
+        <article class="card reveal">
+          <span class="tag">Banking</span>
+          <h3>Enterprise automation</h3>
+          <p>Built Selenium WebDriver, TestNG, and JUnit frameworks across seven enterprise applications at Citi, with a Page Object Model design and reusable utility library that set team-wide standards.</p>
+          <div class="kpi">
+            <div><strong>43&rarr;56%</strong>coverage</div>
+            <div><strong>-37%</strong>maintenance</div>
+          </div>
+        </article>
+        <article class="card reveal">
+          <span class="tag">Payments</span>
+          <h3>Validation at scale</h3>
+          <p>Wrote Python and Pandas data-validation scripts at Mastercard that verified 40M transactional records before downstream ingestion, with CloudWatch instrumentation to diagnose production issues fast.</p>
+          <div class="kpi">
+            <div><strong>40M</strong>records checked</div>
+            <div><strong>AWS</strong>observability</div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="alt" id="experience">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2>Experience.</h2>
+        <p>Six roles, three regulated industries.</p>
+      </div>
+      <div class="exp-list">
+        <div class="exp-row reveal">
+          <div class="when">Mar 2025 &ndash; Present</div>
+          <div class="role"><div class="co">CVS Health</div><div class="ttl">Senior SDET</div><div class="desc">Own the enterprise data reconciliation platform &mdash; FastAPI services, PySpark validation, and agentic-AI mismatch triage, with pytest and Playwright in CI/CD.</div></div>
+        </div>
+        <div class="exp-row reveal">
+          <div class="when">Sep 2024 &ndash; Mar 2025</div>
+          <div class="role"><div class="co">Citi</div><div class="ttl">Software Engineer in Test</div><div class="desc">Architected Selenium, TestNG, and JUnit frameworks across seven applications; embedded REST Assured API automation into Jenkins pipelines.</div></div>
+        </div>
+        <div class="exp-row reveal">
+          <div class="when">Mar 2024 &ndash; Jul 2024</div>
+          <div class="role"><div class="co">Unison Consulting</div><div class="ttl">Software Engineer</div><div class="desc">Resolved API validation and data-consistency defects across Python and Spring Boot services; hardened PostgreSQL, MongoDB, and Jenkins CI/CD.</div></div>
+        </div>
+        <div class="exp-row reveal">
+          <div class="when">Sep 2023 &ndash; Mar 2024</div>
+          <div class="role"><div class="co">Mastercard</div><div class="ttl">Software Engineer</div><div class="desc">Built Python and Pandas validation scripts verifying 40M transactional records; instrumented AWS CloudWatch for faster production diagnosis.</div></div>
+        </div>
+        <div class="exp-row reveal">
+          <div class="when">May 2022 &ndash; Dec 2022</div>
+          <div class="role"><div class="co">Rocket Mortgage</div><div class="ttl">SQA Engineer Intern</div><div class="desc">Built Selenium and TestNG suites with TDD for the consumer site; shipped an upcoming-listings feature that lifted user interaction 17%.</div></div>
+        </div>
+        <div class="exp-row reveal">
+          <div class="when">Sep 2020 &ndash; Aug 2021</div>
+          <div class="role"><div class="co">Paytm</div><div class="ttl">QA Engineer</div><div class="desc">Owned backend quality for UPI, wallet, and EMI payment integrations across high-volume workflows with Postman and PostgreSQL.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPECS -->
+  <section id="specs">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2>Tech specs.</h2>
+        <p>The full toolkit.</p>
+      </div>
+      <div class="spec-list">
+        <div class="spec-row reveal"><div class="cat">Languages</div><div class="val">Python, Java, SQL</div></div>
+        <div class="spec-row reveal"><div class="cat">Test Automation</div><div class="val">Pytest, Selenium WebDriver, Playwright, TestNG, JUnit, REST Assured, Postman, Cucumber, POM, BDD</div></div>
+        <div class="spec-row reveal"><div class="cat">Backend &amp; APIs</div><div class="val">FastAPI, Spring Boot, REST APIs, Microservices, JSON</div></div>
+        <div class="spec-row reveal"><div class="cat">AI &amp; Data</div><div class="val">Agentic AI workflows, LLM-based automation, PySpark, Pandas, Databricks, ETL / data-pipeline validation</div></div>
+        <div class="spec-row reveal"><div class="cat">Databases</div><div class="val">PostgreSQL, MySQL, Oracle, MongoDB</div></div>
+        <div class="spec-row reveal"><div class="cat">CI/CD &amp; Cloud</div><div class="val">Jenkins, GitLab CI, GitHub Actions, Docker, Git, AWS (CloudWatch)</div></div>
+        <div class="spec-row reveal"><div class="cat">Methodologies</div><div class="val">Regression, Integration, API, Performance, Boundary, Negative &amp; Edge-Case testing, Agile / Scrum, SDLC, Jira, Rally</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section class="alt" id="education">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2>Education.</h2>
+      </div>
+      <div class="edu-grid">
+        <div class="edu-card reveal">
+          <div class="deg">M.S. Computer Science</div>
+          <div class="school">Wayne State University, Michigan</div>
+          <div class="meta">GPA 3.8 &middot; May 2023</div>
+        </div>
+        <div class="edu-card reveal">
+          <div class="deg">B.Tech, Information Technology</div>
+          <div class="school">KNIT, Sultanpur</div>
+          <div class="meta">GPA 3.75 &middot; May 2019</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <h2 class="reveal">Let's build something<br>reliable.</h2>
+      <p class="reveal">Open to senior SDET and quality engineering roles. The fastest way to reach me is email.</p>
+      <a class="btn reveal" href="mailto:ashiv2406@gmail.com">Email me</a>
+      <div class="contact-secondary reveal">
+        <a href="https://linkedin.com/in/awasthishivangi24" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="tel:+13136991424">+1 (313) 699-1424</a>
+        <a href="#">R&eacute;sum&eacute; (PDF)</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="foot-inner">
+    <div>Santa Clara, CA &middot; <a href="mailto:ashiv2406@gmail.com">ashiv2406@gmail.com</a> &middot; <a href="https://linkedin.com/in/awasthishivangi24" target="_blank" rel="noopener">LinkedIn</a></div>
+    <div class="rule"></div>
+    <div>Copyright &copy; 2026 Shivangi Awasthi. Personal portfolio. Not affiliated with or endorsed by Apple Inc.</div>
+  </div>
+</footer>
+
+<script>
+  var nav = document.getElementById('nav');
+  function onScroll() {
+    if (window.scrollY > 10) { nav.classList.add('scrolled'); }
+    else { nav.classList.remove('scrolled'); }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var reveals = document.querySelectorAll('.reveal');
+  if (reduce || !('IntersectionObserver' in window)) {
+    reveals.forEach(function (el) { el.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          var el = entry.target;
+          var siblings = Array.prototype.slice.call(el.parentElement.querySelectorAll('.reveal'));
+          var idx = siblings.indexOf(el);
+          el.style.transitionDelay = Math.min(idx * 60, 240) + 'ms';
+          el.classList.add('in');
+          io.unobserve(el);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    reveals.forEach(function (el) { io.observe(el); });
+  }
+</script>
+
+</body>
+</html>
